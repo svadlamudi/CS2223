@@ -41,14 +41,20 @@ public class Trading {
 		// Iterate through all bids entered and add to corresponding buy or sell queue.
 		for (String bid : inputBids) {
 			if (bid.substring(0, 3).equalsIgnoreCase("buy")) {
+				
 				int[] priceQuantity = findPriceQuantityIn(bid);
 				buyQueue.add(new Bid(priceQuantity[0], priceQuantity[1]));
+				
 			} else if (bid.substring(0, 4).equalsIgnoreCase("sell")) {
+				
 				int[] priceQuantity = findPriceQuantityIn(bid);
 				sellQueue.add(new Bid(priceQuantity[0], priceQuantity[1]));
+				
 			} else {
+				
 				System.out.println("Invalid Bid (Buy or Sell Only): " + bid);
 				return;
+				
 			}
 		}
 		
