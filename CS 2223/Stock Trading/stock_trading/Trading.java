@@ -21,8 +21,9 @@ public class Trading {
 /* Main Method */
 	
 	/**
-	 * Main Loop. Takes input from the command line or a file and checks/performs any
-	 * transactions possible to bring market back to equilibrium.
+	 * Main Loop. Takes input from the command line or a file with redirection 
+	 * and checks/performs any transactions possible to bring market back to 
+	 * equilibrium.
 	 * 
 	 * @param args
 	 */
