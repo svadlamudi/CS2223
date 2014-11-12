@@ -3,7 +3,6 @@
 
 package stock_trading;
 
-import java.io.FileNotFoundException;
 import java.util.regex.*;
 import java.util.PriorityQueue;
 import java.util.ArrayList;
@@ -26,9 +25,8 @@ public class Trading {
 	 * transactions possible to bring market back to equilibrium.
 	 * 
 	 * @param args
-	 * @throws FileNotFoundException 
 	 */
-	public static void main(String[] args) throws FileNotFoundException {
+	public static void main(String[] args) {
 		
 		// List to store Transactions performed.
 		ArrayList<Bid> transactions = new ArrayList<Bid>(100);
