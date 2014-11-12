@@ -8,7 +8,11 @@ public class Bid implements Comparable<Bid> {
 /* Interface Required Methods */
 	
 	/**
-	 * Comparable<T> compareTo Method
+	 * Comparable<T> required compareTo Method.
+	 * 
+	 * Returns 1 if the price of this bid is greater than the passed in bid.
+	 * Returns 0 if the price of this bid is equal to the passed in bid.
+	 * Returns -1 if the price of this bid is smaller than the passed in bid.
 	 * 
 	 * @param otherBid
 	 */
@@ -38,7 +42,8 @@ public class Bid implements Comparable<Bid> {
 	}
 	
 	/**
-	 * Constructor which sets the object properties based on the parameter values.
+	 * Constructor which sets the object properties based on the given price and
+	 * quantity.
 	 * 
 	 * @param price
 	 * @param quantity
@@ -90,6 +95,7 @@ public class Bid implements Comparable<Bid> {
 		
 	@Override
 	public String toString() {
-		return "Bid has Price: " + this.price + " and Quantity: " + this.quantity;
+		//return "Bid has Price: " + this.price + " and Quantity: " + this.quantity;
+		return "(" + this.price + ", " + this.quantity + ")";
 	}
 }

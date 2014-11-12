@@ -2,5 +2,6 @@
 <classpath>
 	<classpathentry kind="src" path="Stock Trading"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="W:/Downloads-Main/stdlib-package.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
