@@ -37,7 +37,7 @@ public class Trading {
 		PriorityQueue<Bid> sellQueue = new PriorityQueue<Bid>(10, new MinComparator());
 		
 		// Read and store all bids entered as strings
-		String[] inputBids = StdIn.readAllLines();
+		String[] inputBids = StdIn.readAllLines();		
 		
 		// Iterate through all bids entered and add to corresponding buy or sell queue.
 		for (String bid : inputBids) {
@@ -83,18 +83,21 @@ public class Trading {
 	 */
 	private static int[] findPriceQuantityIn(String inputBidString) {
 		
+		// Instantiate and initialize necessary variables.
 		int[] priceQuantity = new int[2];
 		int i = 0;
 		Matcher priceQuantityMatcher = priceQuantityInString.matcher(inputBidString);
 		
-		while (priceQuantityMatcher.find()) {
+		// Loop through twice to find the two integers, price and quantity, in the input string.
+		while (priceQuantityMatcher.find() && i < 2) {
 			if (priceQuantityMatcher.group().length() != 0) {
 				int tempValue = Integer.parseInt(priceQuantityMatcher.group().trim());
 				priceQuantity[i] = tempValue;
-				if( i < 1 ) { i++; } else { i = 0; }				
+				i++;				
 			}
 		}		
 		
+		// Return an array with the price and quantity read.
 		return priceQuantity;
 	}
 	
@@ -124,10 +127,12 @@ public class Trading {
 				buyersBid = buyQueue.poll();
 				sellersBid = sellQueue.poll();
 				
+				// Check the quantity of stock being traded and subtract from buyer and seller quantities.
 				int minimumQuantity = Math.min(buyersBid.quantity(), sellersBid.quantity());
 				buyersBid.setQuantity(buyersBid.quantity()-minimumQuantity);
 				sellersBid.setQuantity(sellersBid.quantity()-minimumQuantity);
 				
+				// Check if buyer and/or seller have more stocks to sell and if so add back to their respective queues.
 				if (buyersBid.quantity() > 0) {
 					buyQueue.add(buyersBid);
 				}
@@ -135,6 +140,7 @@ public class Trading {
 					sellQueue.add(sellersBid);
 				}
 				
+				// Add transaction to the transaction list.
 				transactions.add(new Bid(sellersBid.price(), minimumQuantity));				
 				
 			} else {
