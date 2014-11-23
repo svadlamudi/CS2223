@@ -1,7 +1,7 @@
-import java.util.ArrayList;
-
 // Name: Sai Kiran Vadlamudi  Username: svadlamudi  Section: B01
 // Name: Marilda Bozdo        Username: mbozdo      Section: B01
+
+import java.util.ArrayList;
 
 public class Node {
 	

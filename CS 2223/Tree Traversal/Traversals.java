@@ -31,43 +31,33 @@ public class Traversals {
 			Pair<Boolean, ArrayList<String>> lineOne = findAllLetters(in.readLine());
 			Pair<Boolean, ArrayList<String>> lineTwo = findAllLetters(in.readLine());
 			
-			if (lineOne.valueTwo.size() != lineTwo.valueTwo.size()) {
-				throw new InvalidTraversal("These traversals are of different lengths.");
-			}
-			
 			// Decorate output
 			System.out.println("\n|----------------------|");
 			System.out.println("|        Results       |");
 			System.out.println("|----------------------|\n");
 			
+			// Catch violation when traversals are of different lengths.
+			if ((lineOne.valueTwo.size() != lineTwo.valueTwo.size()) && (lineTwo.valueTwo.size() > 0)) {
+				throw new InvalidTraversal("These traversals are of different lengths!");
+			}
+			
 			// Check whether one or two lines were successfully read
 			if (lineTwo.valueOne) {				
-				// Try to find postorder given preorder and inorder if and only if they were valid traversals.
-				try {
-					Node binaryTree = pre_in_to_post(lineOne.valueTwo, lineTwo.valueTwo);
-					Node.printPostOrder(binaryTree);
-					System.out.println();
-				} catch (InvalidTraversal it) {
-					System.out.println(it.getMessage());
+				// Get the postorder traversal when given valid, nonempty preorder and inorder.
+				ArrayList<String> postOrderTraversal = pre_in_to_post(lineOne.valueTwo, lineTwo.valueTwo);
+				if (postOrderTraversal.size() > 0) {
+					System.out.println("Preorder and Inorder to Postorder: " + postOrderTraversal);
 				}
-				
-				// Try to find inorder given preorder and postorder if and only if they were valid traversals.
-				try {
-					//Node binaryTreeTwo = pre_post_to_in(lineOne.valueTwo, Node.postOrder(binaryTree));
-					Node binaryTreeTwo = pre_post_to_in(lineOne.valueTwo, lineTwo.valueTwo);
-					Node.printInOrder(binaryTreeTwo);
-					System.out.println();
-				} catch (InvalidTraversal it) {
-					System.out.println(it.getMessage());
+				// Get the inorder traversal when giving valid, nonempty preorder and postorder.
+				ArrayList<String> inOrderTraversal = pre_post_to_in(lineOne.valueTwo, lineTwo.valueTwo);
+				if (inOrderTraversal.size() > 0) {
+					System.out.println("Preorder and Postorder to Inorder: " + inOrderTraversal);
 				}
 			} else if(lineOne.valueOne) {
-				// Try to find the postorder given a valid preorder traversal of a binary search tree.
-				try {
-					Node binarySearchTree = search_pre_to_post(lineOne.valueTwo);
-					Node.printPostOrder(binarySearchTree);
-					System.out.println();
-				} catch (InvalidTraversal it) {
-					System.out.println(it.getMessage());
+				// Get the postorder traversal when given valid, nonempty postorder traversal of a Binary Search Tree.
+				ArrayList<String> postOrderTraversal = search_pre_to_post(lineOne.valueTwo);
+				if (postOrderTraversal.size() > 0) {
+					System.out.println("Preorder of a BST to Postorder: " + postOrderTraversal);
 				}
 			}			
 		} catch (IOException e) {
@@ -79,6 +69,64 @@ public class Traversals {
 		}		
 	}
 
+/* Traversal Caller Methods */
+	
+	/**
+	 * 
+	 * Return a list of strings representing the postorder traversal from the given 
+	 * preorder traversal of a binary search tree.
+	 *
+	 * @param preOrder
+	 * @return
+	 */
+	public static ArrayList<String> search_pre_to_post(ArrayList<String> preOrder) {
+		try {
+			Node binarySearchTree = searchTreePreorderToPostorder(preOrder);
+			return Node.postOrder(binarySearchTree);
+		} catch(InvalidTraversal it) {
+			System.out.println(it.getMessage());
+			return new ArrayList<String>(0);
+		}
+	}
+	
+	/**
+	 * 
+	 * Return a list of strings representing the postorder traversal from the given
+	 * preorder and inorder traversals.
+	 *
+	 * @param preOrder
+	 * @param inOrder
+	 * @return
+	 */
+	public static ArrayList<String> pre_in_to_post(ArrayList<String> preOrder, ArrayList<String> inOrder) {
+		try {
+			Node binaryTree = preorderAndInorderToPostorder(preOrder, inOrder);
+			return Node.postOrder(binaryTree);
+		} catch (InvalidTraversal it) {
+			System.out.println(it.getMessage());
+			return new ArrayList<String>(0);
+		}
+	}
+	
+	/**
+	 * 
+	 * Return a list of strings representing the inorder traversal from the given
+	 * preorder and postorder traversals.
+	 *
+	 * @param preOrder
+	 * @param postOrder
+	 * @return
+	 */
+	public static ArrayList<String> pre_post_to_in(ArrayList<String> preOrder, ArrayList<String> postOrder) {
+		try {
+			Node binaryTree = preorderAndPostorderToInorder(preOrder, postOrder);
+			return Node.inOrder(binaryTree);
+		} catch (InvalidTraversal it) {
+			System.out.println(it.getMessage());
+			return new ArrayList<String>(0);
+		}
+	}
+	
 /* Traversal Methods */
 	
 	/**
@@ -89,7 +137,7 @@ public class Traversals {
 	 * @return
 	 * @throws InvalidTraversal
 	 */
-	public static Node search_pre_to_post(ArrayList<String> preOrder) throws InvalidTraversal {
+	public static Node searchTreePreorderToPostorder(ArrayList<String> preOrder) throws InvalidTraversal {
 		
 		// Instantiate and initialize variables.
 		ArrayList<String> leftPreOrder = null;
@@ -126,8 +174,8 @@ public class Traversals {
 			}
 			
 			// Assemble the left and right binary search trees.
-			treeNode.left = search_pre_to_post(leftPreOrder);
-			treeNode.right = search_pre_to_post(rightPreOrder);
+			treeNode.left = searchTreePreorderToPostorder(leftPreOrder);
+			treeNode.right = searchTreePreorderToPostorder(rightPreOrder);
 		}
 		
 		// Return the assembled binary search tree
@@ -143,7 +191,7 @@ public class Traversals {
 	 * @return
 	 * @throws InvalidTraversal
 	 */
-	public static Node pre_in_to_post(ArrayList<String> preOrder, ArrayList<String> inOrder) throws InvalidTraversal {
+	public static Node preorderAndInorderToPostorder(ArrayList<String> preOrder, ArrayList<String> inOrder) throws InvalidTraversal {
         
 		// Instantiate and Initialize variables.
 		Node treeNode = null;
@@ -176,8 +224,8 @@ public class Traversals {
             rightPreOrder = new ArrayList<String>(preOrder.subList(preOrderPos + 1, preOrder.size()));
             
             // Assemble left and right binary trees.
-            treeNode.left = pre_in_to_post(leftPreOrder, leftInOrder);
-            treeNode.right = pre_in_to_post(rightPreOrder, rightInOrder);
+            treeNode.left = preorderAndInorderToPostorder(leftPreOrder, leftInOrder);
+            treeNode.right = preorderAndInorderToPostorder(rightPreOrder, rightInOrder);
         }
         
         // Return assembled binary tree.
@@ -193,7 +241,7 @@ public class Traversals {
 	 * @return
 	 * @throws InvalidTraversal
 	 */
-	public static Node pre_post_to_in(ArrayList<String> preOrder, ArrayList<String> postOrder) throws InvalidTraversal {
+	public static Node preorderAndPostorderToInorder(ArrayList<String> preOrder, ArrayList<String> postOrder) throws InvalidTraversal {
 		
 		// Instantiate and initialize variables.
 		int splitIndex;
@@ -226,8 +274,8 @@ public class Traversals {
             }
 			
 			// Assemble the left and right binary trees.
-			treeNode.left = pre_post_to_in(preOrder, leftPostOrder);
-			treeNode.right = pre_post_to_in(preOrder, rightPostOrder);
+			treeNode.left = preorderAndPostorderToInorder(preOrder, leftPostOrder);
+			treeNode.right = preorderAndPostorderToInorder(preOrder, rightPostOrder);
 		}
 		
 		// Return assembled binary tree.
@@ -251,8 +299,13 @@ public class Traversals {
 		
 		ArrayList<String> letterArray = new ArrayList<String>(0);
 		Boolean readLettersInLine = false;		
-		Matcher charMatcher = charFind.matcher(inputString);
 		
+		if (inputString == null) {
+			return new Pair<Boolean, ArrayList<String>>(false, new ArrayList<String>(0));
+		}
+		
+		Matcher charMatcher = charFind.matcher(inputString);
+				
 		int loopCounter = 0;		
 		while(charMatcher.find() && loopCounter < 101) {
 			if(charMatcher.group().length() != 0) {
