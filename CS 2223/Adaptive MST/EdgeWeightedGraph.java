@@ -229,18 +229,24 @@ public class EdgeWeightedGraph implements IGraph {
         }
         return s.toString();
     }
-
-	@Override
+    
+    /**
+     * Return the number of vertices in this graph.
+     */
 	public int numVertices() {
 		return this.V;
 	}
 
-	@Override
+	/**
+	 * Return the number of edges in this graph.
+	 */
 	public int numEdges() {
 		return this.E;
 	}
 
-	@Override
+	/**
+	 * Return the adjacent edges to the given vertex.
+	 */
 	public Iterable<Edge> adjEdges(int vertex) {
 		return this.adj(vertex);
 	}

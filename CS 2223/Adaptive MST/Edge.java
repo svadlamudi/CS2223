@@ -103,4 +103,8 @@ public class Edge implements Comparable<Edge> {
         return String.format("%d-%d %.5f", v, w, weight);
     }
 
+    public int hashCode() {
+    	return new Integer(this.v).hashCode() + new Integer(this.w).hashCode() + new Double(this.weight).hashCode();
+    }
+    
 }

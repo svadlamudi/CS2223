@@ -144,24 +144,18 @@ public class Cycle {
         }
     }
 
-    /**
-     * Unit tests the <tt>Cycle</tt> data type.
-     */
-    /*public static void main(String[] args) {
-        In in = new In(args[0]);
-        IGraph G = new IGraph(in);
-        Cycle finder = new Cycle(G);
-        if (finder.hasCycle()) {
-            for (int v : finder.cycle()) {
-                StdOut.print(v + " ");
-            }
-            StdOut.println();
-        }
-        else {
-            StdOut.println("Graph is acyclic");
-        }
-    }*/
-
-
+    public boolean hasVertex(int vertex) {
+    	
+    	if (cycle != null) {
+	    	for (Integer v : cycle) {
+	    		if (v.equals(vertex)) {
+	    			return true;
+	    		}
+	    	}
+    	}
+    	
+    	return false;
+    }
+    
 }
 

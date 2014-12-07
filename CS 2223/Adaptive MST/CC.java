@@ -140,6 +140,11 @@ public class CC {
         return components;
     }
     
+    /**
+     * 
+     * Print this connected components of the spanning forest.
+     *
+     */
     public void printCC() {
     	for (int i = 0; i < this.count; i++) {
             for (int v : components[i]) {
@@ -161,22 +166,20 @@ public class CC {
         return id(v) == id(w);
     }
 
-
     /**
-     * Unit tests the <tt>CC</tt> data type.
+     * 
+     * Return true if the given vertex is in tree two.
+     *
+     * @param v
+     * @param T2
+     * @return
      */
-    /*public static void main(String[] args) {
-        In in = new In(args[0]);
-        IGraph G = new IGraph(in);
-        CC cc = new CC(G);
-
-        // number of connected components
-        int M = cc.count();
-        StdOut.println(M + " components");
-
-        // compute list of vertices in each connected component
-        
-
-        // print results
-    }*/
+    public boolean isCrossing(int v, Queue<Integer> T2) {
+    	for (Integer w : T2) {
+    		if (v == w) {
+    			return true;
+    		}
+    	}    	
+    	return false;
+    }
 }

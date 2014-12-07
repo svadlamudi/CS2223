@@ -101,6 +101,12 @@ public class PrimMST implements IGraph {
         }
     }
     
+    /**
+     * 
+     * Return a clone of this minimum spanning tree.
+     * 
+     * @param origMST
+     */
     public PrimMST(PrimMST origMST) {
     	this.edgeTo = origMST.edgeTo;
     	this.distTo = origMST.distTo;
@@ -210,7 +216,13 @@ public class PrimMST implements IGraph {
 
         return true;
     }
-
+    
+    /**
+     * 
+     * Add given edge to tree. After this the tree is not guaranteed to be a tree.
+     *
+     * @param newEdge
+     */
     public void addEdge(Edge newEdge) {
     	int i;
     	Edge[] newEdges = new Edge[edgeTo.length + 1];
@@ -222,6 +234,13 @@ public class PrimMST implements IGraph {
     	edgeTo = newEdges;
     }
     
+    /**
+     * 
+     * Delete given edge from tree. After this the tree might and probably will not
+     * be a tree.
+     *
+     * @param edge
+     */
     public void deleteEdge(Edge edge) {
     	int i;
     	Edge[] newEdges = new Edge[edgeTo.length];
@@ -238,17 +257,23 @@ public class PrimMST implements IGraph {
     	edgeTo = newEdges;
     }
     
-    @Override
+    /**
+     * Return the number of vertices in this graph.
+     */
 	public int numVertices() {
 		return this.edgeTo.length;
 	}
 
-	@Override
+	/**
+	 * Return the number of edges in this graph.
+	 */
 	public int numEdges() {
 		return this.edgeTo.length;
 	}
 
-	@Override
+	/**
+	 * Return the edges adjacent to the given vertex.
+	 */
 	public Bag<Edge> adjEdges(int vertex) {
 		Bag<Edge> edges = new Bag<Edge>();
 		for (int i = 0; i < edgeTo.length; i++) {
@@ -260,6 +285,11 @@ public class PrimMST implements IGraph {
 		return edges;
 	}
 	
+	/**
+	 * 
+	 * Print this minimum spanning tree.
+	 *
+	 */
 	public void printTree() {
 		for (Edge e : edgeTo) {
 			if (e != null) {
