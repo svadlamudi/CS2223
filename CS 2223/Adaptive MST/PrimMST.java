@@ -89,8 +89,6 @@ public class PrimMST implements IGraph {
         assert check(G);
     }
     
-    public PrimMST(){}
-    
     // run Prim's algorithm in graph G, starting from vertex s
     private void prim(EdgeWeightedGraph G, int s) {
         distTo[s] = 0.0;

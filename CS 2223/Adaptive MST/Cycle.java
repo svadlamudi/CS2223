@@ -119,7 +119,15 @@ public class Cycle {
    public Iterable<Integer> cycle() {
         return cycle;
     }
-
+   
+   /**
+    * 
+    * Use dfs to find the path of the cycle if one is present.
+    *
+    * @param G
+    * @param u
+    * @param v
+    */
     private void dfs(IGraph G, int u, int v) {
         marked[v] = true;
         for (Edge w : G.adjEdges(v)) {
@@ -143,7 +151,14 @@ public class Cycle {
             }
         }
     }
-
+    
+    /**
+     * 
+     * Return true if vertex from is in the second MST.
+     *
+     * @param vertex
+     * @return
+     */
     public boolean hasVertex(int vertex) {
     	
     	if (cycle != null) {

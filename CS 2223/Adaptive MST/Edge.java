@@ -90,7 +90,14 @@ public class Edge implements Comparable<Edge> {
         else if (this.weight() > that.weight()) return +1;
         else                                    return  0;
     }
-
+    
+    /**
+     * 
+     * Return true if that edge has the same vertices as this edge.
+     *
+     * @param that
+     * @return
+     */
     public boolean equals(Edge that) {
     	return (this.v == that.v && this.w == that.w) || (this.w == that.v && this.v == that.w);
     }
@@ -102,7 +109,10 @@ public class Edge implements Comparable<Edge> {
     public String toString() {
         return String.format("%d-%d %.5f", v, w, weight);
     }
-
+    
+    /**
+     * Return an int key for this edge with the use of vertices and weight of edge.
+     */
     public int hashCode() {
     	return new Integer(this.v).hashCode() + new Integer(this.w).hashCode() + new Double(this.weight).hashCode();
     }

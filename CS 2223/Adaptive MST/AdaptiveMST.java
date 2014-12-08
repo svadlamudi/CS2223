@@ -26,6 +26,16 @@ import java.util.*;
 
 public class AdaptiveMST {
   
+	/**
+	 * 
+	 * Main loop which takes a command line file argument and constructs a
+	 * graph and MST from it and then reads in user input to update the 
+	 * tree.
+	 *
+	 * @param args
+	 * @throws IOException
+	 * @throws IllegalArgumentException
+	 */
 	public static void main(String[] args) throws IOException, IllegalArgumentException {
 		
 		// Read in and construct the original graph from a file

@@ -126,6 +126,14 @@ public class CC {
         return id(v) == id(w);
     }
     
+    /**
+     * 
+     * Returns the separate spanning trees in the spanning forest when an edge is
+     * removed from the original minimum spanning tree.
+     *
+     * @param graph
+     * @return
+     */
     public Queue<Integer>[] getConnectedTrees(IGraph graph) {
     	Queue<Integer>[] components = (Queue<Integer>[]) new Queue[this.count];
         
