@@ -7,7 +7,7 @@ public class EWDMatrix {
 	
 /* Constructors */
 	
-	/** 
+	/**
 	 * 
 	 * Initializes an empty edge-weighted digraph with V vertices and 0 edges.
 	 * 
