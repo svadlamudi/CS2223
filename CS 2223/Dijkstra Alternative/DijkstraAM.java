@@ -10,7 +10,7 @@
  * the others and get them. Finding all edges in an adjacency
  * matrix requires O(n) time so for all n the overall time would
  * be O(n^2) because for each n time complexity is O(n).
- * 
+ *  
  */
 public class DijkstraAM {
 
