@@ -19,10 +19,9 @@ public class MinComparator implements Comparator<Bid> {
 	 * Returns 0 if the price of this bid is equal to the passed in bid.
 	 * Returns -1 if the price of this bid is smaller than the passed in bid.
 	 * 
-	 * @param bidOne
-	 * @param bidTwo
+	 * @param edgeOne
+	 * @param edgeTwo
 	 */
-	@Override
 	public int compare(Bid bidOne, Bid bidTwo) {
 		if (bidOne.price() > bidTwo.price()){
 			return 1;

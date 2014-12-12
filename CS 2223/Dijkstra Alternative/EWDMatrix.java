@@ -34,7 +34,7 @@ public class EWDMatrix {
 	 * 
 	 * @param in : input stream
 	 * @throws java.lang.IndexOutofBoundsException if the endpoints of any edge are not in prescribed range
-	 * @throws java.lang.IllegalArgumentException if the number og vertices or edges is negative
+	 * @throws java.lang.IllegalArgumentException if the number of vertices or edges is negative
 	 */
 	public EWDMatrix(In in) {
 		this(in.readInt());

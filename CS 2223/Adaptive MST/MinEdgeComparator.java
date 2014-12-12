@@ -7,10 +7,10 @@ import java.util.Comparator;
  * Comparator object to pass in a method that accepts a comparator.
  * This comparator will sort data structures in an ascending order.
  */
-public class MinComparator implements Comparator<Edge> {
+public class MinEdgeComparator implements Comparator<Edge> {
 
 	// Default Constructor
-	public MinComparator() {}
+	public MinEdgeComparator() {}
 	
 	/**
 	 * Comparable<T> required compareTo Method.

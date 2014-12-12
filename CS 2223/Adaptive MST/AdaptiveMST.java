@@ -249,7 +249,7 @@ public class AdaptiveMST {
     	// Retrieve the spanning connected forest.
     	CC minimumSpanningForest = new CC(origMST);
     	// Create a minimum priority queue of crossing edge to find the minimum crossing edge.
-    	MinPQ<Edge> crossingEdges = new MinPQ<Edge>(new MinComparator());
+    	MinPQ<Edge> crossingEdges = new MinPQ<Edge>(new MinEdgeComparator());
 		Queue<Integer>[] components = minimumSpanningForest.getConnectedTrees(origMST);
 		
 		// Find the crossing edges from tree one to tree two.
