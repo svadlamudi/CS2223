@@ -88,7 +88,7 @@ public class EWDMatrix {
 	
 	/**
 	 * 
-	 * Check if given vertex is valid.
+	 * Check if given vertex is valid. 
 	 *
 	 * @param v
 	 * @throws java.lang.IndexOutofBoundsException if given vertex is not in prescribed range

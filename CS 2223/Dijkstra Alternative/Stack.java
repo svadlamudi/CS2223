@@ -35,7 +35,7 @@ import java.util.NoSuchElementException;
  *  textbook that uses a non-static nested class.
  *  The <em>push</em>, <em>pop</em>, <em>peek</em>, <em>size</em>, and <em>is-empty</em>
  *  operations all take constant time in the worst case.
- *  <p>
+ *  <p> 
  *  For additional documentation, see <a href="/algs4/13stacks">Section 1.3</a> of
  *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
  *

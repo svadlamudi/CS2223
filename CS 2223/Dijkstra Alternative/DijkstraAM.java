@@ -223,7 +223,7 @@ public class DijkstraAM {
 		// Calculate the shortest paths.
 		DijkstraAM sp = new DijkstraAM(G, s);
 		
-		// Print the shortest paths.
+		// Print the shortest paths. 
 		for(int t = 0; t < G.V(); t++) {
 			if(sp.hasPathTo(t)) {
 				System.out.println(String.format("%d to %d (%.2f)", s, t, sp.distTo[t]));

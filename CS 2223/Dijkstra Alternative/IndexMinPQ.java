@@ -22,7 +22,7 @@ import java.util.NoSuchElementException;
  *  It also supports methods for peeking at the minimum key,
  *  testing if the priority queue is empty, and iterating through
  *  the keys.
- *  <p>
+ *  <p> 
  *  This implementation uses a binary heap along with an array to associate
  *  keys with integers in the given range.
  *  The <em>insert</em>, <em>delete-the-minimum</em>, <em>delete</em>,

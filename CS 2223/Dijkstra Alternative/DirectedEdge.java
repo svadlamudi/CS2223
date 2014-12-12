@@ -26,7 +26,7 @@ public class DirectedEdge {
 
     /**
      * Initializes a directed edge from vertex <tt>v</tt> to vertex <tt>w</tt> with
-     * the given <tt>weight</tt>.
+     * the given <tt>weight</tt>. 
      * @param v the tail vertex
      * @param w the head vertex
      * @param weight the weight of the directed edge
