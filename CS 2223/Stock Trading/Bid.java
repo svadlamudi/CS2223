@@ -1,8 +1,6 @@
 // Name: Sai Kiran Vadlamudi  Username: svadlamudi  Section: B01
 // Name: Marilda Bozdo        Username: mbozdo      Section: B01
 
-package stock_trading;
-
 public class Bid implements Comparable<Bid> {
 	
 /* Interface Required Methods */
