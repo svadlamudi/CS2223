@@ -2,6 +2,11 @@
  * @author Sai Kiran Vadlamudi
  * @author Marilda Bozdo
  * 
+ * Partnership:
+ * 	Summary: a complementing, well made partnership that resulted in an equal distribution of work.
+ * 	Sai V.: I helped implement the algorithms we came up with in Java.
+ * 	Marilda B.: I helped come up with mathematically sound algorithms to be implemented in Java.
+ * 
  * Path-finding runtime: O(n^2) where n = number of vertices.
  * Reason: Dijkstra's Shortest path visits each vertex relaxing
  * all the vertices adjacent to it so if the graph is in an adjacency
